@@ -20,8 +20,8 @@ export const ToDoList: React.FC<TodoListProps> = ({
     <ul>
       {todos.map((todo) => {
         const classes = ["todo"];
-        if (todo.complited) {
-          classes.push("complited");
+        if (todo.completed) {
+          classes.push("completed");
         }
 
         return (
@@ -29,7 +29,7 @@ export const ToDoList: React.FC<TodoListProps> = ({
             <label>
               <input
                 type="checkbox"
-                checked={todo.complited}
+                checked={todo.completed}
                 onChange={onToggle.bind(null, todo.id)}
               />
               <span>{todo.title}</span>

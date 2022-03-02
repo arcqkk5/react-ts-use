@@ -12,9 +12,8 @@ const App: React.FC = () => {
     const newTodo: ITodo = {
       title: title,
       id: Date.now(),
-      complited: false,
+      completed: false,
     };
-    // setTodos([newTodo, ...todos])
     setTodos((prev) => [newTodo, ...prev]);
   };
 
@@ -22,7 +21,7 @@ const App: React.FC = () => {
     setTodos((prev) =>
       prev.map((todo) => {
         if (todo.id === id) {
-          todo.complited = !todo.complited;
+          todo.completed = !todo.completed;
         }
         return todo;
       })
@@ -30,7 +29,10 @@ const App: React.FC = () => {
   };
 
   const removeHendler = (id: number) => {
-    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+    const shoudRemove = window.confirm("Delete?");
+    if (shoudRemove) {
+      setTodos((prev) => prev.filter((todo) => todo.id !== id));
+    }
   };
 
   return (
